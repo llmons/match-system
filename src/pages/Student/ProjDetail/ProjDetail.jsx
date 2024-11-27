@@ -1,8 +1,13 @@
 import {Box, Button, Card, CardActions, CardContent, CardHeader, Typography} from "@mui/material";
 import {useParams} from "react-router";
+import {useEffect} from "react";
 
 const ProjDetail = () => {
     const {name, count, sum, msg} = useParams()
+
+    useEffect(() => {
+        console.log(name, count, sum, msg)
+    }, [])
 
     return (
         <Box margin="10%">

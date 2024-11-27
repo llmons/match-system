@@ -1,9 +1,9 @@
-import Sidebar from "./Sidebar.jsx";
 import {Box, Grid2 as Grid, Stack} from "@mui/material";
-import ProjCard from "../../../components/ProjCard.jsx";
 import {useEffect, useState} from "react";
+import ProjCard from "../../../components/ProjCard.jsx";
+import Filter from "./Filter.jsx";
 
-const FindProj = () => {
+const ManageProj = () => {
     const [projList, setProjList] = useState([])
 
     const apiArr = [
@@ -23,20 +23,20 @@ const FindProj = () => {
     }, [])
 
     return (
-        <Stack direction="row" spacing={2} sx={{margin: '10%'}}>
-            <Sidebar/>
-            <Box flex={4}>
+        <Box flex={5} p={20}>
+            <Stack direction="column" spacing={2}>
+                <Filter/>
                 <Grid container spacing={2}>
                     {projList.map((item, idx) => (
-                        <Grid size={4} key={idx}>
+                        <Grid size={3} key={idx}>
                             <ProjCard
                                 key={idx} name={item.name} count={item.count} sum={item.sum} meg={item.message}/>
                         </Grid>
                     ))}
                 </Grid>
-            </Box>
-        </Stack>
+            </Stack>
+        </Box>
     )
 }
 
-export default FindProj;
+export default ManageProj;

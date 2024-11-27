@@ -1,15 +1,16 @@
-import {Box, Drawer, List, ListItem} from "@mui/material";
+import {Box, Stack} from "@mui/material";
+import {Outlet} from "react-router-dom";
+import React from "react";
+import Sidebar from "./Sidebar.jsx";
 
 const Manager = () => {
+
     return (
-        <Box>
-            <Drawer>
-                <List>
-                    <ListItem button>管理项目</ListItem>
-                    <ListItem button>管理学生</ListItem>
-                    <ListItem button>管理教师</ListItem>
-                </List>
-            </Drawer>
+        <Box width="100%" height="100%">
+            <Stack direction="row" spacing={2}>
+                <Sidebar/>
+                <Outlet/>
+            </Stack>
         </Box>
     )
 }

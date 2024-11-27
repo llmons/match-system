@@ -16,7 +16,7 @@ const ProjCard = ({name, count, sum, meg}) => {
                 </CardContent>
                 <CardActions>
                     <Button onClick={() => {
-                        navigate(`student/ProjDetail/${name}/${count}/${sum}/${meg}`)
+                        navigate(`/student/ProjDetail/${name}/${count}/${sum}/${meg}`)
                     }}>详情</Button>
                 </CardActions>
             </Card>
