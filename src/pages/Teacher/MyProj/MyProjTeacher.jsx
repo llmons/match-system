@@ -2,7 +2,7 @@ import {Box, Grid2 as Grid} from "@mui/material";
 import ProjCard from "../../../components/ProjCard.jsx";
 import {useEffect, useState} from "react";
 
-const MyProj = () => {
+const MyProjTeacher = () => {
     const [projList, setProjList] = useState([])
 
     const apiArr = [
@@ -35,4 +35,4 @@ const MyProj = () => {
     )
 }
 
-export default MyProj;
+export default MyProjTeacher;

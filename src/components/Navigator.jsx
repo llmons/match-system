@@ -1,4 +1,4 @@
-import {AppBar, Avatar, Box, Button, IconButton, Menu, MenuItem, Toolbar, Typography} from "@mui/material";
+import {AppBar, Avatar, Box, Button, IconButton, Menu, MenuItem, Toolbar, Typography, useTheme} from "@mui/material";
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import React from "react";
@@ -6,10 +6,11 @@ import ChatIcon from '@mui/icons-material/Chat';
 import LogoDevIcon from '@mui/icons-material/LogoDev';
 import {useNavigate} from "react-router";
 
-const Navigator = () => {
+const Navigator = ({avatorAlpha, findProjPath, myProjPath}) => {
     const [mode, setMode] = React.useState('light');
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const theme = useTheme();
 
     return (
         <AppBar position="static">
@@ -20,10 +21,10 @@ const Navigator = () => {
                     </IconButton>
                 </Box>
                 <Button color="inherit" onClick={() => {
-                    navigate('/student/findProj')
+                    navigate(findProjPath)
                 }}>项目广场</Button>
                 <Button color="inherit" onClick={() => {
-                    navigate('/student/myProj')
+                    navigate(myProjPath)
                 }}>我的项目</Button>
                 <IconButton>
                     <ChatIcon/>
@@ -34,7 +35,8 @@ const Navigator = () => {
                     {mode === 'light' ? <LightModeIcon/> : <DarkModeIcon/>}
                 </IconButton>
                 <Button onClick={(e) => setAnchorEl(e.currentTarget)}>
-                    <Avatar>S</Avatar>
+                    <Avatar
+                        sx={{background: theme.palette.info.light}}>{avatorAlpha}</Avatar>
                 </Button>
 
                 <Menu

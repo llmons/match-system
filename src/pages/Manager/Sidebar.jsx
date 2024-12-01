@@ -6,6 +6,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DataObjectIcon from '@mui/icons-material/DataObject';
+import Person4Icon from '@mui/icons-material/Person4';
 
 const Sidebar = () => {
     const [selectedIndex, setSelectedIndex] = React.useState();
@@ -15,6 +16,7 @@ const Sidebar = () => {
     const routeIdxMap = {
         '/manager': 0,
         '/manager/manageProj': 1,
+        '/manager/ProjDetail': 1,
         '/manager/manageStudent': 2,
         '/manager/manageTeacher': 3,
     }
@@ -24,9 +26,14 @@ const Sidebar = () => {
     }, [location.pathname]);
 
     return (
-        <Drawer variant={"permanent"} open sx={{width: "10vw"}}>
-            <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="10%"
-                 p={2}>
+        <Drawer variant="permanent" open sx={{width: "10vw"}}>
+            <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                width="100%"
+                height="10%"
+                p={2}>
                 <LogoDevIcon fontSize="large"/>
             </Box>
             <Divider/>
@@ -80,14 +87,16 @@ const Sidebar = () => {
                         sx={{borderRadius: '10px'}}
                     >
                         <ListItemIcon>
-                            <PersonIcon/>
+                            <Person4Icon/>
                         </ListItemIcon>
                         <ListItemText primary="教师管理" sx={{textAlign: 'center'}}/>
                     </ListItemButton>
                     <Divider sx={{mt: 2, mb: 2}}/>
-                    <ListItemButton onClick={() => {
-                        navigate('/')
-                    }} sx={{borderRadius: '10px', mt: 2, mb: 2}}
+                    <ListItemButton
+                        onClick={() => {
+                            navigate('/')
+                        }}
+                        sx={{borderRadius: '10px', mt: 2, mb: 2}}
                     >
                         <ListItemIcon>
                             <LogoutIcon/>

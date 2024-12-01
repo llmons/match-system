@@ -3,14 +3,18 @@ import Login from "./pages/Login.jsx";
 import Student from "./pages/Student/Student.jsx";
 import Teacher from "./pages/Teacher/Teacher.jsx";
 import Manager from "./pages/Manager/Manager.jsx";
-import FindProj from "./pages/Student/FindProj/FindProj.jsx";
-import MyProj from "./pages/Student/MyProj/MyProj.jsx";
-import ProjDetail from "./pages/Student/ProjDetail/ProjDetail.jsx";
-import Home from "./pages/Student/Home/Home.jsx";
+import FindProjStudent from "./pages/Student/FindProj/FindProjStudent.jsx";
+import MyProjStudent from "./pages/Student/MyProj/MyProjStudent.jsx";
+import ProjDetailStudent from "./pages/Student/ProjDetail/ProjDetailStudent.jsx";
+import Home from "./components/Home.jsx";
 import ManageProj from "./pages/Manager/ManageProj/ManageProj.jsx";
 import ManageStudent from "./pages/Manager/ManagerStudent/ManageStudent.jsx";
 import ManageTeacher from "./pages/Manager/ManagerTeacher/ManageTeacher.jsx";
 import DashBoard from "./pages/Manager/DashBoard/DashBoard.jsx";
+import ProjDetailManager from "./pages/Manager/ManageProj/ProjDetailManager.jsx";
+import FindProjTeacher from "./pages/Teacher/FindProj/FindProjTeacher.jsx";
+import MyProjTeacher from "./pages/Teacher/MyProj/MyProjTeacher.jsx";
+import ProjDetailTeacher from "./pages/Teacher/ProjDetail/ProjDetailTeacher.jsx";
 
 const router = createHashRouter([
     {
@@ -27,21 +31,39 @@ const router = createHashRouter([
             },
             {
                 path: 'findProj',
-                element: <FindProj/>,
+                element: <FindProjStudent/>,
             },
             {
                 path: 'myProj',
-                element: <MyProj/>,
+                element: <MyProjStudent/>,
             },
             {
-                path: 'projDetail/:name/:count/:sum/:msg',
-                element: <ProjDetail/>,
+                path: 'projDetail',
+                element: <ProjDetailStudent/>,
             }
         ]
     },
     {
         path: '/teacher',
-        element: <Teacher/>
+        element: <Teacher/>,
+        children: [
+            {
+                index: true,
+                element: <Home/>,
+            },
+            {
+                path: 'findProj',
+                element: <FindProjTeacher/>,
+            },
+            {
+                path: 'myProj',
+                element: <MyProjTeacher/>,
+            },
+            {
+                path: 'projDetail',
+                element: <ProjDetailTeacher/>,
+            }
+        ]
     },
     {
         path: '/manager',
@@ -54,6 +76,10 @@ const router = createHashRouter([
             {
                 path: 'manageProj',
                 element: <ManageProj/>,
+            },
+            {
+                path: 'ProjDetail',
+                element: <ProjDetailManager/>,
             },
             {
                 path: 'manageStudent',

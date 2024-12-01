@@ -6,8 +6,8 @@ import AuditProj from "./AuditProj.jsx";
 
 const TabPanel = ({children, value, index}) => {
     return (
-        <Box>
-            {value === index && <Box>{children}</Box>}
+        <Box width="100%">
+            {value === index && <Box width="100%" height="100%">{children}</Box>}
         </Box>
     )
 }

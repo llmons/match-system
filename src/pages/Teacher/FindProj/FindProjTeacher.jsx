@@ -3,7 +3,7 @@ import {Box, Grid2 as Grid, Stack} from "@mui/material";
 import ProjCard from "../../../components/ProjCard.jsx";
 import {useEffect, useState} from "react";
 
-const FindProj = () => {
+const FindProjTeacher = () => {
     const [projList, setProjList] = useState([])
 
     const apiArr = [
@@ -39,4 +39,4 @@ const FindProj = () => {
     )
 }
 
-export default FindProj;
+export default FindProjTeacher;

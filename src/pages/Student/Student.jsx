@@ -1,11 +1,11 @@
 import {Box} from "@mui/material";
-import Navigator from "./Navigator.jsx";
+import Navigator from "../../components/Navigator.jsx";
 import {Outlet} from "react-router-dom";
 
 const Student = () => {
     return (
         <Box>
-            <Navigator/>
+            <Navigator avatorAlpha="S" findProjPath="/student/findProj" myProjPath="/student/myProj"/>
             <Outlet/>
         </Box>
     );

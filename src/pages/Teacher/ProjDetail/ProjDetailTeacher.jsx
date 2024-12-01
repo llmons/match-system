@@ -2,7 +2,7 @@ import {Box, Button, Card, CardActions, CardContent, CardHeader, Typography} fro
 import {useParams} from "react-router";
 import {useEffect} from "react";
 
-const ProjDetail = () => {
+const ProjDetailTeacher = () => {
     const {name, count, sum, msg} = useParams()
 
     useEffect(() => {
@@ -26,4 +26,4 @@ const ProjDetail = () => {
     )
 }
 
-export default ProjDetail;
+export default ProjDetailTeacher;
