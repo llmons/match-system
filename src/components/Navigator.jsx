@@ -5,15 +5,16 @@ import React from "react";
 import ChatIcon from '@mui/icons-material/Chat';
 import LogoDevIcon from '@mui/icons-material/LogoDev';
 import {useNavigate} from "react-router";
+import PropTypes from "prop-types";
 
-const Navigator = ({avatorAlpha, findProjPath, myProjPath}) => {
-    const [mode, setMode] = React.useState('light');
-    const navigate = useNavigate();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+const Navigator = ({avatarAlpha, findProjPath, myProjPath}) => {
     const theme = useTheme();
+    const navigate = useNavigate();
+    const [mode, setMode] = React.useState('light');
+    const [anchorEl, setAnchorEl] = React.useState();
 
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Toolbar variant="regular" sx={{justifyContent: 'space-between', gap: 3}}>
                 <Box flex={1}>
                     <IconButton onClick={() => navigate('/student')}>
@@ -24,7 +25,7 @@ const Navigator = ({avatorAlpha, findProjPath, myProjPath}) => {
                     navigate(findProjPath)
                 }}>项目广场</Button>
                 <Button color="inherit" onClick={() => {
-                    navigate(myProjPath)
+                    // navigate(myProjPath)
                 }}>我的项目</Button>
                 <IconButton>
                     <ChatIcon/>
@@ -36,7 +37,7 @@ const Navigator = ({avatorAlpha, findProjPath, myProjPath}) => {
                 </IconButton>
                 <Button onClick={(e) => setAnchorEl(e.currentTarget)}>
                     <Avatar
-                        sx={{background: theme.palette.info.light}}>{avatorAlpha}</Avatar>
+                        sx={{background: theme.palette.info.light}}>{avatarAlpha}</Avatar>
                 </Button>
 
                 <Menu
@@ -67,6 +68,12 @@ const Navigator = ({avatorAlpha, findProjPath, myProjPath}) => {
                 </Menu>
             </Toolbar>
         </AppBar>)
+}
+
+Navigator.propTypes = {
+    avatarAlpha: PropTypes.string.isRequired,
+    findProjPath: PropTypes.string.isRequired,
+    myProjPath: PropTypes.string.isRequired,
 }
 
 export default Navigator;

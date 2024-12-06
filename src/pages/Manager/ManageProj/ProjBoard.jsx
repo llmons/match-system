@@ -33,7 +33,7 @@ const Search = () => {
 
 const ProjBoard = () => {
     const [projList, setProjList] = useState([])
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(1)
     const pageSize = 9
 
     useEffect(() => {

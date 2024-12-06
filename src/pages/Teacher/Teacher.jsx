@@ -5,7 +5,7 @@ import {Outlet} from "react-router-dom";
 const Teacher = () => {
     return (
         <Box>
-            <Navigator avatorAlpha="T" findProjPath="/teacher/findProj" myProjPath="/teacher/myProj"/>
+            <Navigator avatarAlpha="T" findProjPath="/teacher/projPlaza" myProjPath="/teacher/myProj"/>
             <Outlet/>
         </Box>
     )

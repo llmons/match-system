@@ -25,29 +25,26 @@ const DashBoard = () => {
     ]);
 
     useEffect(() => {
-        fetch(api)
-            .then(res => res.json())
-            .then(json => {
-                const data = json.data;
-                setProjDataList(projDataList => [
-                    {
-                        ...projDataList[0],
-                        sum: data.ieProj_sum,
-                        valid: data.ieProj_valid
-                    },
-                    {
-                        ...projDataList[1],
-                        sum: data.competitionProj_sum,
-                        valid: data.competitionProj_valid
-                    },
-                    {
-                        ...projDataList[2],
-                        sum: data.graduationProj_sum,
-                        valid: data.graduationProj_valid
-                    }
-                ]);
-            })
-            .catch(err => console.log(err));
+        const fetchData = async () => {
+            const data = await fetch(api)
+                .then(res => res.json())
+                .then(json => json.data);
+            setProjDataList((prev) => [
+                {
+                    ...prev[0],
+                    ...data.ieProj
+                },
+                {
+                    ...prev[1],
+                    ...data.competitionProj,
+                },
+                {
+                    ...prev[2],
+                    ...data.graduationProj,
+                }
+            ]);
+        }
+        fetchData().then(null);
     }, [])
 
     return (
