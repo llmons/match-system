@@ -14,7 +14,7 @@ const Navigator = ({avatarAlpha, findProjPath, myProjPath}) => {
     const [anchorEl, setAnchorEl] = React.useState();
 
     return (
-        <AppBar position="fixed">
+        <AppBar position="sticky">
             <Toolbar variant="regular" sx={{justifyContent: 'space-between', gap: 3}}>
                 <Box flex={1}>
                     <IconButton onClick={() => navigate('/student')}>

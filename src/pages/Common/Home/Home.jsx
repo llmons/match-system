@@ -1,28 +1,7 @@
-import {Box, Button, Input, Stack, Typography} from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
-import {useNavigate} from "react-router";
-import ProjDisplayBox from "./ProjDisplayBox.jsx";
-import RecommendProj from "./RecommendProj.jsx";
-
-const Search = () => {
-    const navigate = useNavigate()
-
-    return (
-        <Box width="70%" height="15%" backgroundColor="white" borderRadius="10px" display="flex"
-             justifyContent="center" alignItems="center" pl={2} pr={2}>
-            <SearchIcon/>
-            <Input placeholder="搜索..."
-                   disableUnderline
-                   fullWidth
-                   sx={{margin: '10px'}}
-                   onKeyDown={(e) => {
-                       if (e.key === 'Enter') {
-                           navigate('/student/projPlaza')
-                       }
-                   }}/>
-        </Box>
-    )
-}
+import {alpha, Box, Container, Stack, useTheme} from "@mui/material";
+import Welcome from "./Welcome/Welcome.jsx";
+import CardStack from "./CardStack/CardStack.jsx";
+import Introduction from "./Introduction/Introduction.jsx";
 
 export const getRandomProj = async () => {
     const apiArr = [
@@ -41,34 +20,34 @@ export const getRandomProj = async () => {
 }
 
 export default function Home() {
-    const navigate = useNavigate()
+    const theme = useTheme()
 
     return (
-        <Box>
-            <Stack direction="column" spacing={5}>
-                <Stack direction="row"
-                       justifyContent="space-between"
-                       alignItems="center"
-                       spacing={5}
-                       width="100%"
-                       height="50%">
-                    <Stack
-                        direction="column"
-                        spacing={5}>
-                        <Typography variant="h2" color="textSecondary">寻找喜欢的项目</Typography>
-                        <Search/>
-                        <Button
-                            variant="outlined"
-                            sx={{width: "30%", height: "15%"}}
-                            onClick={() => {
-                                navigate('projPlaza')
-                            }}>开始探索</Button>
+        <Box
+            sx={{
+                background: `linear-gradient(
+                 to right,white 0%,
+                 ${alpha(theme.palette.info.light, 0.1)} 30%,
+                 ${alpha(theme.palette.info.light, 0.1)} 70%,
+                 white 100%)`,
+            }}>
+
+            <Container>
+                <Stack direction="column"
+                       spacing={20}
+                       sx={{pt: 15}}>
+
+                    <Stack direction="row"
+                           justifyContent="space-around"
+                           spacing={2}>
+                        <Welcome/>
+                        <CardStack/>
                     </Stack>
 
-                    <ProjDisplayBox></ProjDisplayBox>
+                    <Introduction/>
                 </Stack>
-                <RecommendProj/>
-            </Stack>
+            </Container>
         </Box>
+
     )
 }
