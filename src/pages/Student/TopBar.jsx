@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import {AppBar, Avatar, Box, Button, IconButton, Menu, MenuItem, Stack, Toolbar, useTheme} from '@mui/material';
 import {DarkMode, Info, Notifications, WbSunny} from '@mui/icons-material'; // MUI 图标
 import {Link} from 'react-router-dom';
-import {useNavigate} from "react-router";
-import ChatIcon from "@mui/icons-material/Chat"; // 如果你需要导航
+import {useNavigate} from "react-router"; // 如果你需要导航
 
 const TopBar = () => {
     const navigate = useNavigate();
@@ -61,11 +60,6 @@ const TopBar = () => {
 
                 {/* 右侧内容 */}
                 <Stack direction="row" spacing={2}>
-                    {/* 站内信图标 */}
-                    <IconButton color="inherit">
-                        <ChatIcon/>
-                    </IconButton>
-
                     {/* 信息图标 */}
                     <IconButton color="inherit">
                         <Info/>
