@@ -1,7 +1,7 @@
 import {alpha, Box, Container, Stack, useTheme} from "@mui/material";
-import Welcome from "./Welcome/Welcome.jsx";
-import CardStack from "./CardStack/CardStack.jsx";
-import Introduction from "./Introduction/Introduction.jsx";
+import TWelcome from "./Welcome/TWelcome.jsx";
+import TCardStack from "./CardStack/TCardStack.jsx";
+import TIntroduction from "./Introduction/TIntroduction.jsx";
 
 export const getRandomProj = async () => {
     const apiArr = [
@@ -22,13 +22,16 @@ export const getRandomProj = async () => {
 export default function Home() {
     const theme = useTheme()
 
+    // 定义一个红色的透明度和不透明度
+    const redTransparent = alpha('#FF0000', 0.1); // 10% 透明度的红色
+
     return (
         <Box
             sx={{
                 background: `linear-gradient(
                  to right,white 0%,
-                 ${alpha(theme.palette.info.light, 0.1)} 30%,
-                 ${alpha(theme.palette.info.light, 0.1)} 70%,
+                 ${redTransparent} 70%,
+                 ${redTransparent} 30%,
                  white 100%)`,
             }}>
 
@@ -39,11 +42,11 @@ export default function Home() {
 
                     <Stack direction="row"
                            justifyContent="space-around"
-                           spacing={2}>
-                        <Welcome/>
-                        <CardStack/>
+                           spacing={20}>
+                        <TCardStack/>
+                        <TWelcome/>
                     </Stack>
-                    <Introduction/>
+                    <TIntroduction/>
                 </Stack>
             </Container>
         </Box>
