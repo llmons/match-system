@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {AppBar, Avatar, Box, Button, IconButton, Menu, MenuItem, Stack, Toolbar, useTheme} from '@mui/material';
 import {DarkMode, Info, Notifications, WbSunny} from '@mui/icons-material'; // MUI 图标
 import {Link} from 'react-router-dom';
-import {useNavigate} from "react-router";
-import ChatIcon from "@mui/icons-material/Chat"; // 如果你需要导航
+import {useNavigate} from "react-router"; // 如果你需要导航
+import ChatIcon from '@mui/icons-material/Chat';
 
 const TopBar = () => {
     const navigate = useNavigate();
@@ -21,13 +21,13 @@ const TopBar = () => {
     const handleMenuClose = () => setAnchorEl(null);
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ backgroundColor: '#FFC0CB' }}>
             <Toolbar sx={{justifyContent: 'space-between'}}>
                 {/* 左侧内容 */}
                 <Stack direction="row" spacing={5} sx={{ml: 30}}>
                     <Box sx={{pr: 4}}>
-                        <Link to="/student">
-                            <img src="/public/logo.ico"
+                        <Link to="/teacher">
+                            <img src="/public/logo1.ico"
                                  alt="logo"
                                  style={{borderRadius: '50%', cursor: 'pointer'}}/>
                         </Link>
@@ -36,16 +36,16 @@ const TopBar = () => {
                     <Button
                         color="inherit"
                         component={Link}
-                        to="/student/projPlaza"
-                        sx={{textTransform: 'none'}}
+                        to="/teacher/myProj"
+                        sx={{textTransform: 'none',color: '#FFFFFF'}}
                     >
-                        项目广场
+                        管理项目
                     </Button>
 
                     <Button
                         color="inherit"
                         component={Link}
-                        sx={{textTransform: 'none'}}
+                        sx={{textTransform: 'none',color: '#FFFFFF'}}
                     >
                         获取帮助
                     </Button>
@@ -53,7 +53,7 @@ const TopBar = () => {
                     <Button
                         color="inherit"
                         component={Link}
-                        sx={{textTransform: 'none'}}
+                        sx={{textTransform: 'none',color: '#FFFFFF'}}
                     >
                         关于我们
                     </Button>
@@ -62,22 +62,22 @@ const TopBar = () => {
                 {/* 右侧内容 */}
                 <Stack direction="row" spacing={2}>
                     {/* 站内信图标 */}
-                    <IconButton color="inherit">
+                    <IconButton color="#FFFFFF">
                         <ChatIcon/>
                     </IconButton>
 
                     {/* 信息图标 */}
-                    <IconButton color="inherit">
+                    <IconButton color="FFFFFF">
                         <Info/>
                     </IconButton>
 
                     {/* 提醒图标 */}
-                    <IconButton color="inherit">
+                    <IconButton color="#FFFFFF">
                         <Notifications/>
                     </IconButton>
 
                     {/* 主题切换按钮 */}
-                    <IconButton color="inherit" onClick={handleToggleTheme}>
+                    <IconButton color="FFFFFF" onClick={handleToggleTheme}>
                         {darkMode ? <WbSunny/> : <DarkMode/>}
                     </IconButton>
 
@@ -96,7 +96,7 @@ const TopBar = () => {
                             paper: {
                                 elevation: 0,
                                 sx: {
-                                    backgroundColor: 'rgb(204, 242, 246)',
+                                    backgroundColor: '#FFC0CB',
                                     overflow: 'visible',
                                     mt: 1.5,
                                     '&:before': {
