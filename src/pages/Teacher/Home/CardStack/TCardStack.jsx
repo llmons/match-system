@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from 'react';
 import {alpha, Box, Card, CardContent, Stack, styled, Typography} from '@mui/material';
 import {motion} from 'framer-motion'; // 确保这里导入的是 framer-motion
-import {getRandomProj} from '../Home.jsx';
+import {getRandomProj} from '../../../Common/Home/Home.jsx';
 import {LoadingContext} from '../../../../components/LoadingProvider.jsx';
 import {useNavigate} from "react-router";
 
@@ -27,7 +27,7 @@ const Overlay = styled(Box)(({theme, hovered}) => ({
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: hovered ? `${alpha('#FFC0CB', 0.5)}` : 'transparent',
+    backgroundColor: hovered ? `${alpha('#FFCCCC', 0.5)}` : 'transparent',
     transition: 'background-color 0.3s ease',
 }));
 

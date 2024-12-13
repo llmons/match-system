@@ -36,8 +36,9 @@ const Section = ({isReversed = false, description, index}) => {
                 >
                     {isReversed ? (
                         <Card>
-                            {index === 0 ? (<img src="/src/assets/ieproj.svg" alt="svg" width="100%"/>)
-                                : (<img src="/src/assets/graduation.svg" alt="svg" width="100%"/>)}
+                            <CardContent>
+                                <img src="/src/assets/competition.svg" alt="svg" width="100%"/>
+                            </CardContent>
                         </Card>
                     ) : (
                         <Stack direction="column" spacing={2} justifyContent="center" alignItems="center">
@@ -69,9 +70,8 @@ const Section = ({isReversed = false, description, index}) => {
                         </Stack>
                     ) : (
                         <Card>
-                            <CardContent>
-                                <img src="/src/assets/competition.svg" alt="svg" width="100%"/>
-                            </CardContent>
+                            {index === 0 ? (<img src="/src/assets/ieproj.svg" alt="svg" width="100%"/>)
+                            : (<img src="/src/assets/graduation.svg" alt="svg" width="100%"/>)}
                         </Card>
                     )}
                 </Grid2>

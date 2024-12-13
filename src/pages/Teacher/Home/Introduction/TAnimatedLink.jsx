@@ -6,7 +6,6 @@ import {ArrowForward} from "@mui/icons-material";
 
 const TAnimatedLink = ({href, children}) => {
     const theme = useTheme();
-
     return (
         <Link
             component={RouterLink}

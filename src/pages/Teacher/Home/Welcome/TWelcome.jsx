@@ -1,5 +1,5 @@
 import {Button, Stack, Typography} from "@mui/material";
-import SearchBar from "./SearchBar.jsx";
+import SearchBar from "../../../Common/Home/Welcome/SearchBar.jsx";
 import TTextCarousel from "./TTextCarousel.jsx";
 import {useNavigate} from "react-router";
 

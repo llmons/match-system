@@ -5,7 +5,7 @@ import React, {useContext} from "react";
 import TopBar from "./TopBar.jsx";
 import {LoadingContext, LoadingProvider} from "../../components/LoadingProvider.jsx";
 import FullScreenLoader from "../../components/FullScreenLoader.jsx";
-import TFooter from "../Common/TFooter.jsx";
+import TFooter from "./Home/TFooter.jsx";
 
 const Teacher = () => {
     return (
