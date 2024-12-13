@@ -12,6 +12,7 @@ import ManageStudent from "./pages/Manager/ManagerStudent/ManageStudent.jsx";
 import ManageTeacher from "./pages/Manager/ManagerTeacher/ManageTeacher.jsx";
 import DashBoard from "./pages/Manager/DashBoard/DashBoard.jsx";
 import ProjDetailManager from "./pages/Manager/ManageProj/ProjDetailManager.jsx";
+import THome from "./pages/Teacher/Home/THome.jsx";
 
 const router = createHashRouter([
     {
@@ -43,7 +44,12 @@ const router = createHashRouter([
     {
         path: '/teacher',
         element: <Teacher/>,
-        children: []
+        children: [
+            {
+                index: true,
+                element: <THome/>,
+            }
+        ]
     },
     {
         path: '/manager',
