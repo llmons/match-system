@@ -43,7 +43,6 @@ export default function Home() {
                         <Welcome/>
                         <CardStack/>
                     </Stack>
-
                     <Introduction/>
                 </Stack>
             </Container>
