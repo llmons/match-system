@@ -1,7 +1,9 @@
-import {Box, Grid2} from "@mui/material";
-import {useEffect, useState} from "react";
+import { Box, Container, Grid2 } from "@mui/material";
+import { useEffect, useState } from "react";
 import Bars from "./Bars.jsx";
 import Pies from "./Pies.jsx";
+import { Breadcrumbs, Link, Typography } from "@mui/material";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const api = "http://127.0.0.1:4523/m1/5504325-5180481-default/Project/getData";
 
@@ -48,12 +50,12 @@ const DashBoard = () => {
     }, [])
 
     return (
-        <Box flex={4} sx={{padding: '10%'}}>
+        <Container sx={{ margin: 'auto', pt: 15, pb: 15 }}>
             <Grid2 container spacing={2}>
-                <Bars projDataList={projDataList}/>
-                <Pies projDataList={projDataList}/>
+                <Bars projDataList={projDataList} />
+                <Pies projDataList={projDataList} />
             </Grid2>
-        </Box>
+        </Container>
     )
 }
 
