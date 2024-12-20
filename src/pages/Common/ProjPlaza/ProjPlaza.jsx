@@ -96,13 +96,13 @@ export default function ProjPlaza() {
     >
       <Breadcrumbs separator={<NavigateNextIcon />}>
         <Link
-          underline='hover'
-          key='1'
-          color='inherit'
-          sx={{ cursor: 'pointer' }}
-          onClick={() => {
-            navigate('/student');
-          }}
+            underline='hover'
+            key='1'
+            color='inherit'
+            sx={{ cursor: 'pointer' }}
+            onClick={() => {
+              navigate('/student');
+            }}
         >
           首页
         </Link>

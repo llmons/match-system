@@ -22,16 +22,12 @@ export const getRandomProj = async () => {
 export default function Home() {
     const theme = useTheme()
 
-    // 定义一个红色的透明度和不透明度
-    const redTransparent = alpha('#FF0000', 0.1); // 10% 透明度的红色
-
     return (
         <Box
             sx={{
                 background: `linear-gradient(
-                 to right,white 0%,
-                 ${redTransparent} 70%,
-                 ${redTransparent} 30%,
+                 to right, white 0%,
+                 ${theme.palette.secondary.light} 50%,
                  white 100%)`,
             }}>
 

@@ -21,7 +21,7 @@ const TopBar = () => {
     const handleMenuClose = () => setAnchorEl(null);
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: '#FFC0CB' }}>
+        <AppBar position="static" sx={{ backgroundColor: theme.palette.primary.main }}>
             <Toolbar sx={{justifyContent: 'space-between'}}>
                 {/* 左侧内容 */}
                 <Stack direction="row" spacing={5} sx={{ml: 30}}>
@@ -36,7 +36,7 @@ const TopBar = () => {
                     <Button
                         color="inherit"
                         component={Link}
-                        to="/teacher/myProj"
+                        to="/teacherManage/myProj"
                         sx={{textTransform: 'none',color: '#FFFFFF'}}
                     >
                         管理项目
@@ -96,7 +96,7 @@ const TopBar = () => {
                             paper: {
                                 elevation: 0,
                                 sx: {
-                                    backgroundColor: '#FFC0CB',
+                                    backgroundColor: theme.palette.primary.main,
                                     overflow: 'visible',
                                     mt: 1.5,
                                     '&:before': {
@@ -107,7 +107,7 @@ const TopBar = () => {
                                         right: 14,
                                         width: 10,
                                         height: 10,
-                                        backgroundColor: 'rgb(204, 242, 246)',
+                                        backgroundColor: '#FFC0CB',
                                         transform: 'translateY(-50%) rotate(45deg)',
                                         zIndex: 0,
                                     },

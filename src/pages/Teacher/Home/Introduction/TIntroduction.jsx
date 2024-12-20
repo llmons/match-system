@@ -37,7 +37,7 @@ const Section = ({isReversed = false, description, index}) => {
                     {isReversed ? (
                         <Card>
                             <CardContent>
-                                <img src="/src/assets/competition.svg" alt="svg" width="100%"/>
+                                <img src="/src/pages/Teacher/assets/2.svg" alt="svg" width="100%"/>
                             </CardContent>
                         </Card>
                     ) : (
@@ -45,8 +45,8 @@ const Section = ({isReversed = false, description, index}) => {
                             <Typography variant="body1" sx={{textIndent: '1rem'}}>
                                 {description}
                             </Typography>
-                            {index === 0 ? (<TAnimatedLink href="/teacher/newProj">创建大创项目</TAnimatedLink>)
-                                : (<TAnimatedLink href="/teacher/newProj">创建毕设项目</TAnimatedLink>)}
+                            {index === 0 ? (<TAnimatedLink href="/teacherManage/newProj">创建大创项目</TAnimatedLink>)
+                                : (<TAnimatedLink href="/teacherManage/newProj">创建毕设项目</TAnimatedLink>)}
                         </Stack>
                     )}
                 </Grid2>
@@ -66,12 +66,12 @@ const Section = ({isReversed = false, description, index}) => {
                             <Typography variant="body1" sx={{textIndent: '1rem'}}>
                                 {description}
                             </Typography>
-                            <TAnimatedLink href="/teacher/newProj">创建竞赛项目</TAnimatedLink>
+                            <TAnimatedLink href="/teacherManage/newProj">创建竞赛项目</TAnimatedLink>
                         </Stack>
                     ) : (
                         <Card>
-                            {index === 0 ? (<img src="/src/assets/ieproj.svg" alt="svg" width="100%"/>)
-                            : (<img src="/src/assets/graduation.svg" alt="svg" width="100%"/>)}
+                            {index === 0 ? (<img src="/src/pages/Teacher/assets/4.svg" alt="svg" width="100%"/>)
+                            : (<img src="/src/pages/Teacher/assets/5.svg" alt="svg" width="100%"/>)}
                         </Card>
                     )}
                 </Grid2>

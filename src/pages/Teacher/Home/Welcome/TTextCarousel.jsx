@@ -37,7 +37,7 @@ const TTextCarousel = () => {
                     transition={{duration: 0.3}} // 动画持续时间
                     style={{position: 'absolute', width: '100%', textAlign: 'center'}}
                 >
-                    <Typography variant="h5" color={'#FFC0CB'}>
+                    <Typography variant="h5" color={'#FAA'}>
                         {texts[index]}
                     </Typography>
                 </motion.div>

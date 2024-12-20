@@ -28,7 +28,7 @@ const techData = [
 
 // 页脚的容器样式
 const FooterContainer = styled(Box)(({theme}) => ({
-    backgroundColor: '#FFC0CB',
+    backgroundColor: theme.palette.primary.main,
     padding: '16px 0',
     display: 'flex',
     justifyContent: 'center',
