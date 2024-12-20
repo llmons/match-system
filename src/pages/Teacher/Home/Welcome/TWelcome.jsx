@@ -1,10 +1,11 @@
-import {Button, Stack, Typography} from "@mui/material";
+import {Button, Stack, Typography, useTheme} from "@mui/material";
 import SearchBar from "../../../Common/Home/Welcome/SearchBar.jsx";
 import TTextCarousel from "./TTextCarousel.jsx";
 import {useNavigate} from "react-router";
 
 export default function Welcome() {
     const navigate = useNavigate()
+    const theme = useTheme()
     return (
         <Stack
             direction="column"
@@ -26,10 +27,10 @@ export default function Welcome() {
                 sx={{
                     width: '25%',
                     borderRadius: 3,
-                    backgroundColor: '#FFC0CB',
+                    backgroundColor: theme.palette.primary.main,
                 }}
                 onClick={() => {
-                    navigate('myProj')
+                    navigate('/teacherManage/myProj')
                 }}>管理我的项目</Button>
         </Stack>
     )

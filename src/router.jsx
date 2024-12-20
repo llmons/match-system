@@ -13,6 +13,10 @@ import ManageTeacher from './pages/Manager/ManagerTeacher/ManageTeacher.jsx';
 import DashBoard from './pages/Manager/DashBoard/DashBoard.jsx';
 import ProjDetailManager from './pages/Manager/ManageProj/ProjDetailManager.jsx';
 import THome from './pages/Teacher/Home/THome.jsx';
+import TeacherManager from './pages/Teacher/TeacherManage/TeacherManage.jsx';
+import MyProjTeacher from "./pages/Teacher/MyProj/MyProjTeacher.jsx";
+import ProjDetailTeacher from "./pages/Teacher/ProjDetail/ProjDetailTeacher.jsx";
+import NewProj from "./pages/Teacher/NewProj/newProj.jsx";
 
 const router = createHashRouter([
   {
@@ -49,6 +53,28 @@ const router = createHashRouter([
         index: true,
         element: <THome />,
       },
+    ],
+  },
+  {
+    path: '/teacherManage',
+    element: <TeacherManager />,
+    children: [
+      {
+        index: true,
+        element: <TeacherManager />,
+      },
+      {
+        path: 'myProj',
+        element: <MyProjTeacher />,
+      },
+      {
+        path: 'newProj',
+        element: <NewProj />,
+      },
+      {
+        path: 'projDetail/:category/:id',
+        element: <ProjDetailTeacher />,
+      }
     ],
   },
   {

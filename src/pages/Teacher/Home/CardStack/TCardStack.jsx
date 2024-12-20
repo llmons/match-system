@@ -13,7 +13,7 @@ const CardContainer = styled(motion.div)(({theme, hovered}) => ({
     backgroundColor: '#ffffff',
     boxShadow: '4px 4px 12px rgba(0, 0, 0, 0.1)',
     position: 'absolute',
-    border: hovered ? `4px solid ${'#FFC0CB'}` : 'none',
+    border: hovered ? `4px solid ${theme.palette.primary.main}` : 'none',
     overflow: 'hidden',
     transition: 'border 0.3s ease',
     cursor: 'pointer',
@@ -124,10 +124,10 @@ const TCardStack = () => {
                                         </Typography>
                                     </>
                                     {popularProj[index]?.category === '大创' ? (
-                                            <img src="/src/assets/ieproj.svg" alt="svg"/>)
+                                            <img src="/src/pages/Teacher/assets/1.svg" alt="svg"/>)
                                         : popularProj[index]?.category === '竞赛' ? (
-                                                <img src="/src/assets/competition.svg" alt="svg"/>)
-                                            : (<img src="/src/assets/graduation.svg" alt="svg"/>)}
+                                                <img src="/src/pages/Teacher/assets/2.svg" alt="svg"/>)
+                                            : (<img src="/src/pages/Teacher/assets/3.svg" alt="svg"/>)}
                                 </Stack>
                             </CardContent>
                         </Card>

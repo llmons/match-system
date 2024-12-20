@@ -14,11 +14,11 @@ const TAnimatedLink = ({href, children}) => {
             sx={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                color: '#FFC0CB',
+                color: theme.palette.secondary,
                 textDecoration: 'none',
                 position: 'relative',
                 fontWeight: 500,
-                '&:hover': {color: '#FF8080'}
+                '&:hover': {color: theme.palette.primary}
             }}
         >
             {/* 文字部分 */}
@@ -31,10 +31,10 @@ const TAnimatedLink = ({href, children}) => {
                     variant="h6"
                     component="span"
                     sx={{
-                        color: '#FFC0CB',
+                        color: theme.palette.secondary,
                         position: 'relative',
                         zIndex: 1,
-                        '&:hover': {color: '#FF8080'}
+                        '&:hover': {color: theme.palette.primary}
                     }}
                 >
                     {children}
@@ -50,7 +50,7 @@ const TAnimatedLink = ({href, children}) => {
                     style={{
                         position: 'absolute',
                         height: '2px',
-                        backgroundColor: '#FF8080',
+                        backgroundColor: theme.palette.primary.main,
                         bottom: 0,
                         left: 0,
                     }}

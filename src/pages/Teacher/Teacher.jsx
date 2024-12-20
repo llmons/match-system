@@ -1,4 +1,4 @@
-import {Box} from "@mui/material";
+import {Box, createTheme, ThemeProvider} from "@mui/material";
 import {Outlet} from "react-router-dom";
 import Sidebar from "../Manager/Sidebar.jsx";
 import React, {useContext} from "react";
@@ -7,10 +7,25 @@ import {LoadingContext, LoadingProvider} from "../../components/LoadingProvider.
 import FullScreenLoader from "../../components/FullScreenLoader.jsx";
 import TFooter from "./Home/TFooter.jsx";
 
+const theme = createTheme(
+    {
+        palette: {
+            mode: 'light',
+            primary: {
+                main: '#FAA',
+            },
+            secondary: {
+                main: '#FFC0CB77',
+            }
+        }
+    }
+);
 const Teacher = () => {
     return (
         <LoadingProvider>
-            <TeacherContent/>
+            <ThemeProvider theme={theme}>
+                <TeacherContent/>
+            </ThemeProvider>
         </LoadingProvider>
     );
 };

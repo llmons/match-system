@@ -1,36 +1,73 @@
-import {Box, Grid2 as Grid} from "@mui/material";
-import ProjCard from "../../../components/ProjCard.jsx";
-import {useEffect, useState} from "react";
+import {AppBar, Box, Breadcrumbs, Container, Link, Stack, Tab, Tabs, Toolbar, Typography} from "@mui/material";
+import React, {useState} from "react";
+import PropTypes from "prop-types";
+import ProjBoard from "./ProjBoard.jsx";
+import AuditProj from "./AuditProj.jsx";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import {useNavigate} from "react-router";
+import FailProj from "./FailProj.jsx";
+
+const TabPanel = ({children, value, index}) => {
+    return (
+        <Box width="100%">
+            {value === index && <Box width="100%" height="100%">{children}</Box>}
+        </Box>
+    )
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    value: PropTypes.number.isRequired,
+    index: PropTypes.number.isRequired,
+}
 
 const MyProjTeacher = () => {
-    const [projList, setProjList] = useState([])
-
-    const apiArr = [
-        'http://127.0.0.1:4523/m1/5504325-5180481-default/IEProj/findByStatus',
-        'http://127.0.0.1:4523/m1/5504325-5180481-default/CompetitionProj/findByStatus',
-        'http://127.0.0.1:4523/m1/5504325-5180481-default/GraduationProj/findByStatus']
-
-    useEffect(() => {
-        apiArr.forEach((api) => {
-            fetch(api)
-                .then(res => res.json())
-                .then(json => {
-                    setProjList((prevProjList) => [...prevProjList, ...json.data]);
-                })
-                .catch(e => console.log(e));
-        })
-    }, [])
+    const [value, setValue] = useState(0);
+    const navigate = useNavigate();
 
     return (
-        <Box margin="10%">
-            <Grid container spacing={2}>
-                {projList.map((item, idx) => (
-                    <Grid size={3} key={idx}>
-                        <ProjCard
-                            key={idx} name={item.name} count={item.count} sum={item.sum} meg={item.message}/>
-                    </Grid>
-                ))}
-            </Grid>
+        <Box flex={1} sx={{pt: 0, pb: 10}}>
+            <AppBar position="static" sx={{ backgroundColor: '#FAA' }}>
+                <Toolbar sx={{justifyContent: 'space-between'}}>
+                    {/* 左侧内容 */}
+                    <Stack direction="row" spacing={5} sx={{ml: 0}}>
+                        <Breadcrumbs sx={{color: '#FFFFFF'}} separator={<NavigateNextIcon />}>
+                            <Link
+                                underline='hover'
+                                key='1'
+                                color='inherit'
+                                sx={{ cursor: 'pointer' }}
+                                onClick={() => {
+                                    navigate('/teacher');
+                                }}
+                            >
+                                首页
+                            </Link>
+                            <Typography key='3' sx={{ color: '#FFFFFF' }}>
+                                我的项目
+                            </Typography>
+                        </Breadcrumbs>
+                    </Stack>
+                </Toolbar>
+            </AppBar>
+        <Box flex={1}>
+            <Box sx={{borderBottom: 1, borderColor: '#FFC0CB', pl:5}}>
+                <Tabs value={value} onChange={(_, newValue) => setValue(newValue)} aria-label="basic tabs example">
+                    <Tab sx={{color: '#FAA'}} label="项目列表"/>
+                    <Tab sx={{color: '#FAA'}} label="审核中的项目"/>
+                    <Tab sx={{color: '#FAA'}} label="未通过审核的项目"/>
+                </Tabs>
+            </Box>
+            <TabPanel value={value} index={0}>
+                <ProjBoard/>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <AuditProj/>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+                <FailProj/>
+            </TabPanel>
+        </Box>
         </Box>
     )
 }
