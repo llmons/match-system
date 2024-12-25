@@ -14,9 +14,10 @@ import DashBoard from './pages/Manager/DashBoard/DashBoard.jsx';
 import ProjDetailManager from './pages/Manager/ManageProj/ProjDetailManager.jsx';
 import THome from './pages/Teacher/Home/THome.jsx';
 import TeacherManager from './pages/Teacher/TeacherManage/TeacherManage.jsx';
-import MyProjTeacher from "./pages/Teacher/MyProj/MyProjTeacher.jsx";
-import ProjDetailTeacher from "./pages/Teacher/ProjDetail/ProjDetailTeacher.jsx";
-import NewProj from "./pages/Teacher/NewProj/newProj.jsx";
+import MyProjTeacher from './pages/Teacher/MyProj/MyProjTeacher.jsx';
+import ProjDetailTeacher from './pages/Teacher/ProjDetail/ProjDetailTeacher.jsx';
+import NewProj from './pages/Teacher/NewProj/newProj.jsx';
+import NotFound from './pages/NotFound.jsx';
 
 const router = createHashRouter([
   {
@@ -74,7 +75,7 @@ const router = createHashRouter([
       {
         path: 'projDetail/:category/:id',
         element: <ProjDetailTeacher />,
-      }
+      },
     ],
   },
   {
@@ -102,6 +103,10 @@ const router = createHashRouter([
         element: <ManageTeacher />,
       },
     ],
+  },
+  {
+    path: '/notfound',
+    element: <NotFound />,
   },
 ]);
 
