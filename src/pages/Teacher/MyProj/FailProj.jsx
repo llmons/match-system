@@ -30,7 +30,8 @@ const AuditProj = () => {
             direction="column"
             spacing={3}
             mt={5}
-            sx={{width: '100%', height: '100%'}}>
+            ml={5}
+            sx={{width: '95%', height: '100%'}}>
             {paginatedList.map((item, i) => (
                 <Accordion key={i} sx={{
                     borderRadius: "10px",

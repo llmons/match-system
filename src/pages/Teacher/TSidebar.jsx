@@ -15,8 +15,7 @@ const Sidebar = () => {
     const location = useLocation();
 
     const routeIdxMap = {
-        '/teacher': 0,
-        '/teacherManage/myProj': 1,
+        '/teacherManage/myProj': 0,
         '/teacherManage/newProj': 1,
     }
 

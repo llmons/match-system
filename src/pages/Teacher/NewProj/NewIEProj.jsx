@@ -34,6 +34,7 @@ const NewIEProj = () => {
     );
 
     const [category, setCategory] = useState("1");
+    const [category1, setCategory1] = useState("1");
     const [type, setType] = useState("1");
     const [open, setOpen] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -76,10 +77,11 @@ const NewIEProj = () => {
                                 </TextField>
                             </Grid>
                             <Grid size={5}>
-                                <TextField disabled={true} multiline defaultValue="大创项目" required
+                                <TextField disabled multiline defaultValue="大创项目" required={true}
                                            label="项目类型" fullWidth={true}>
                                 </TextField>
                             </Grid>
+
                             <Grid size={3}>
                                 <TextField required={true}
                                            label="项目所需人数" fullWidth={true}>
