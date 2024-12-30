@@ -14,7 +14,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { useNavigate, useParams } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
@@ -44,6 +44,8 @@ const ProjDetailStudent = () => {
   const [value, setValue] = useState(0);
   const [applied, setApplied] = useState(false);
   const [open, setOpen] = useState(false);
+  const textRef = useRef(null);
+  const [text, setText] = useState('');
 
   useEffect(() => {
     let api;
@@ -140,10 +142,21 @@ const ProjDetailStudent = () => {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Stack sx={{ mt: 5 }} height='50vh' spacing={3}>
-          <TextField label='申请信息' multiline rows={6} fullWidth />
+          <TextField
+            ref={textRef}
+            label='申请信息'
+            multiline
+            rows={6}
+            fullWidth
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
           <Button
             variant='contained'
             onClick={() => {
+              if (text === '') {
+                return;
+              }
               setOpen(true);
             }}
           >

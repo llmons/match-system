@@ -28,25 +28,6 @@ const Login = () => {
         }}
       />
 
-      {/* GitHub 图标 */}
-      <Link
-        href='https://github.com/llmons/match-system'
-        target='_blank'
-        sx={{
-          position: 'absolute',
-          bottom: 24,
-          right: 24,
-          color: 'text.primary',
-          '&:hover': {
-            color: 'primary.main',
-          },
-        }}
-      >
-        <IconButton>
-          <GitHubIcon />
-        </IconButton>
-      </Link>
-
       {/* 主要内容 */}
       <Box
         display='flex'
@@ -77,15 +58,11 @@ const Login = () => {
               type='submit'
               variant='contained'
               sx={{
-                backgroundColor: '#212B36',
                 color: 'white',
                 px: 4,
                 py: 1,
                 borderRadius: '8px',
                 textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: '#454F5B',
-                },
               }}
               onClick={() => navigate('/student')}
             >
@@ -98,15 +75,11 @@ const Login = () => {
               type='submit'
               variant='contained'
               sx={{
-                backgroundColor: '#212B36',
                 color: 'white',
                 px: 4,
                 py: 1,
                 borderRadius: '8px',
                 textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: '#454F5B',
-                },
               }}
               onClick={() => navigate('/teacher')}
             >
@@ -119,15 +92,11 @@ const Login = () => {
               type='submit'
               variant='contained'
               sx={{
-                backgroundColor: '#212B36',
                 color: 'white',
                 px: 4,
                 py: 1,
                 borderRadius: '8px',
                 textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: '#454F5B',
-                },
               }}
               onClick={() => navigate('/manager')}
             >
@@ -140,15 +109,11 @@ const Login = () => {
               type='submit'
               variant='contained'
               sx={{
-                backgroundColor: '#212B36',
                 color: 'white',
                 px: 4,
                 py: 1,
                 borderRadius: '8px',
                 textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: '#454F5B',
-                },
               }}
               onClick={() => navigate('/notfound')}
             >

@@ -21,20 +21,23 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const routeIdxMap = React.useMemo(() => ({
-    '/manager': 0,
-    '/manager/manageProj': 1,
-    '/manager/ProjDetail': 1,
-    '/manager/manageStudent': 2,
-    '/manager/manageTeacher': 3,
-  }), []);
+  const routeIdxMap = React.useMemo(
+    () => ({
+      '/manager': 0,
+      '/manager/manageProj': 1,
+      '/manager/ProjDetail': 1,
+      '/manager/manageStudent': 2,
+      '/manager/manageTeacher': 3,
+    }),
+    []
+  );
 
   useEffect(() => {
     setSelectedIndex(routeIdxMap[location.pathname] ?? 0);
   }, [location.pathname, routeIdxMap]);
 
   return (
-    <Box width='240px'>
+    <Box width={170}>
       <Drawer variant='permanent' open anchor='left' display='block'>
         <Box
           display='flex'

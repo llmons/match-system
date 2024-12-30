@@ -12,7 +12,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -50,9 +50,10 @@ FilterSection.propTypes = {
   defaultExpanded: PropTypes.bool,
 };
 
-const FilterSidebar = () => {
+const FilterSidebar = ({ fetchData, setLoading }) => {
   const theme = useTheme();
   const [searchFocused, setSearchFocused] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const [selectedFilters, setSelectedFilters] = useState({
     projectType: [],
     major: [],
@@ -60,31 +61,63 @@ const FilterSidebar = () => {
     type: [],
   });
 
+  // 处理搜索
+  const handleSearch = (value) => {
+    setSearchValue(value);
+    setLoading(true);
+    // 延迟300ms执行搜索，避免频繁请求
+    const timeoutId = setTimeout(() => {
+      fetchData({ search: value, filters: selectedFilters }).finally(() => {
+        setLoading(false);
+      });
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  };
+
   // 处理复选框变化
   const handleCheckboxChange = (category, value) => {
-    setSelectedFilters((prev) => ({
-      ...prev,
-      [category]: prev[category].includes(value)
-        ? prev[category].filter((item) => item !== value)
-        : [...prev[category], value],
-    }));
+    setLoading(true);
+    const newFilters = {
+      ...selectedFilters,
+      [category]: selectedFilters[category].includes(value)
+        ? selectedFilters[category].filter((item) => item !== value)
+        : [...selectedFilters[category], value],
+    };
+
+    setSelectedFilters(newFilters);
+    fetchData({ search: searchValue, filters: newFilters }).finally(() => {
+      setLoading(false);
+    });
   };
 
   // 删除单个过滤器
   const handleDeleteFilter = (category, value) => {
-    setSelectedFilters((prev) => ({
-      ...prev,
-      [category]: prev[category].filter((item) => item !== value),
-    }));
+    setLoading(true);
+    const newFilters = {
+      ...selectedFilters,
+      [category]: selectedFilters[category].filter((item) => item !== value),
+    };
+
+    setSelectedFilters(newFilters);
+    fetchData({ search: searchValue, filters: newFilters }).finally(() => {
+      setLoading(false);
+    });
   };
 
   // 清除所有过滤器
   const handleClearAll = () => {
-    setSelectedFilters({
+    setLoading(true);
+    const newFilters = {
       projectType: [],
       major: [],
       useCase: [],
       type: [],
+    };
+
+    setSelectedFilters(newFilters);
+    fetchData({ search: searchValue, filters: newFilters }).finally(() => {
+      setLoading(false);
     });
   };
 
@@ -112,6 +145,8 @@ const FilterSidebar = () => {
           <InputBase
             sx={{ ml: 1, flex: 1 }}
             placeholder='搜索项目...'
+            value={searchValue}
+            onChange={(e) => handleSearch(e.target.value)}
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)}
           />
@@ -217,6 +252,11 @@ const FilterSidebar = () => {
       </FilterSection>
     </Stack>
   );
+};
+
+FilterSidebar.propTypes = {
+  fetchData: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
 };
 
 export default FilterSidebar;

@@ -79,37 +79,15 @@ const NotFound = () => {
         variant='contained'
         onClick={() => navigate('/')}
         sx={{
-          backgroundColor: '#212B36',
           color: 'white',
           px: 4,
           py: 1,
           borderRadius: '8px',
           textTransform: 'none',
-          '&:hover': {
-            backgroundColor: '#454F5B',
-          },
         }}
       >
         返回登录页
       </Button>
-      {/* GitHub 图标 */}
-      <Link
-        href='https://github.com/llmons/match-system'
-        target='_blank'
-        sx={{
-          position: 'absolute',
-          bottom: 24,
-          right: 24,
-          color: 'text.primary',
-          '&:hover': {
-            color: 'primary.main',
-          },
-        }}
-      >
-        <IconButton>
-          <GitHubIcon />
-        </IconButton>
-      </Link>
     </Box>
   );
 };

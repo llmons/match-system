@@ -59,27 +59,44 @@ export default function ProjPlaza() {
   const [page, setPage] = useState(1);
   const pageSize = 9;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await Promise.all([
-        fetch(apis.getIe)
-          .then((res) => res.json())
-          .then((json) => json.data)
-          .catch((e) => console.log(e)),
-        fetch(apis.getCompetition)
-          .then((res) => res.json())
-          .then((json) => json.data)
-          .catch((e) => console.log(e)),
-        fetch(apis.getGraduation)
-          .then((res) => res.json())
-          .then((json) => json.data)
-          .catch((e) => console.log(e)),
-      ]);
+  const fetchData = async ({ search = '', filters = {} } = {}) => {
+    setLoading(true);
+    try {
+      // 构建查询参数
+      const queryParams = new URLSearchParams();
+      if (search) queryParams.append('search', search);
+      if (filters.projectType?.length) queryParams.append('types', filters.projectType.join(','));
+      if (filters.major?.length) queryParams.append('majors', filters.major.join(','));
+
+      const urls = [
+        `${apis.getIe}?${queryParams}`,
+        `${apis.getCompetition}?${queryParams}`,
+        `${apis.getGraduation}?${queryParams}`,
+      ];
+
+      const data = await Promise.all(
+        urls.map(url =>
+          fetch(url)
+            .then(res => res.json())
+            .then(json => json.data)
+            .catch(e => {
+              console.error(e);
+              return [];
+            })
+        )
+      );
+
       setProjList(data.flat());
-    };
-    fetchData().then(() => {
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setProjList([]);
+    } finally {
       setLoading(false);
-    });
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   const paginatedProj = useMemo(
@@ -96,13 +113,13 @@ export default function ProjPlaza() {
     >
       <Breadcrumbs separator={<NavigateNextIcon />}>
         <Link
-            underline='hover'
-            key='1'
-            color='inherit'
-            sx={{ cursor: 'pointer' }}
-            onClick={() => {
-              navigate('/student');
-            }}
+          underline='hover'
+          key='1'
+          color='inherit'
+          sx={{ cursor: 'pointer' }}
+          onClick={() => {
+            navigate('/student');
+          }}
         >
           首页
         </Link>
@@ -121,10 +138,12 @@ export default function ProjPlaza() {
       </Box>
 
       <Stack direction='row' spacing={3} sx={{ mt: 5 }}>
-        <FilterSidebar />
+        <FilterSidebar fetchData={fetchData} setLoading={setLoading} />
         <Stack direction='column' flex={1} alignItems='center'>
           {loading ? (
-            <CircularProgress />
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+              <CircularProgress />
+            </Box>
           ) : (
             <CardDisplay paginatedProj={paginatedProj} />
           )}
